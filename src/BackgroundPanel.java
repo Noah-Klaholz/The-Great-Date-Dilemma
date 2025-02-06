@@ -2,10 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 
 // Should be used to draw background images (animation seems to be rather difficult)
-public class GamePanel extends JPanel {
+public class BackgroundPanel extends JPanel {
     private Image backgroundImage;
 
-    public GamePanel(String imagePath) {
+    public BackgroundPanel(String imagePath) {
         backgroundImage = new ImageIcon(imagePath).getImage();
     }
 
