@@ -5,9 +5,10 @@ import java.awt.*;
 // Should be used to draw background images (animation seems to be rather difficult)
 public class DrawingPanel extends JPanel {
 
-    boolean text = false;
+    public boolean text = false;
 
     String displayedText = ""; // What’s currently shown
+    public String fulltext = "";
     int textIndex = 0; // Tracks how much of the text is revealed
 
     public DrawingPanel() {
@@ -22,19 +23,22 @@ public class DrawingPanel extends JPanel {
         g2.drawRoundRect(100, getHeight()-(getHeight()/4),getWidth()-200,getHeight()/8,50, 100);
     }
 
+    // Draws text according to Variable displayedText
     public void showText(Graphics g) {
         if(text) {
             Graphics2D g2 = (Graphics2D) g;
             printSpeechBubble(g2);
-            g2.setFont(new Font("Arial", Font.BOLD, 20));
+            g2.setFont(new Font("Arial", Font.BOLD, 40));
             FontMetrics fm = g2.getFontMetrics();
             int textX = (getWidth() - fm.stringWidth(displayedText)) / 2;
-            int textY = getHeight()-(getHeight()/6+50); // Slightly above the bottom
+            int textY = getHeight()-(getHeight()/6);
             g2.drawString(displayedText, textX, textY);
         }
     }
 
+    // Makes characters show up one at a time using a Timer
     public void text(String fullText) {
+        this.fulltext = fullText;
         text = true;
         Timer timer = new Timer(50, e -> {
             if (textIndex < fullText.length()) {
@@ -46,6 +50,12 @@ public class DrawingPanel extends JPanel {
             }
         });
         timer.start();
+    }
+
+    public void finishText() {
+        displayedText = fulltext;
+        textIndex = fulltext.length();
+        repaint();
     }
 
     @Override
