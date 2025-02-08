@@ -57,6 +57,7 @@ public class GUI extends JFrame {
             }
         }, AWTEvent.MOUSE_EVENT_MASK);
 
+        //Test Test
         repaint();
         setVisible(true);
     }
