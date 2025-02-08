@@ -1,15 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 public class GUI extends JFrame {
 
     private final GameLogic gameLogic;
     private final BackgroundPanel backgroundPanel;
     public final DrawingPanel drawingPanel;
-    private final JLayeredPane layeredPane;
 
     public GUI(GameLogic gameLogic) {
 
@@ -21,20 +18,19 @@ public class GUI extends JFrame {
         setBounds(0,0,800,800);
 
         // Fullscreen mode
-        /*
+
         if (gd.isFullScreenSupported()) {
             gd.setFullScreenWindow(this);
         } else {
             System.out.println("Fullscreen not supported");
         }
 
-         */
 
         ImageIcon OrigExitButtonIcon = new ImageIcon(CONST.exit_Button_path);
         Image scaledIcon = OrigExitButtonIcon.getImage().getScaledInstance(50,50, Image.SCALE_SMOOTH);
         ImageIcon exitButtonIcon = new ImageIcon(scaledIcon);
 
-        layeredPane = new JLayeredPane();
+        JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setBounds(0,0,getWidth(),getHeight());
         setContentPane(layeredPane);
 
