@@ -49,11 +49,10 @@ public class GUI extends JFrame {
         layeredPane.add(drawingPanel, Integer.valueOf(1)); // Puts the Drawing Panel in foreground, use this for any other foreground features!
 
         Toolkit.getDefaultToolkit().addAWTEventListener(event -> {
-            if (event instanceof MouseEvent mouseEvent && mouseEvent.getID() == MouseEvent.MOUSE_CLICKED) {
+            if (event instanceof MouseEvent mouseEvent && mouseEvent.getID() == MouseEvent.MOUSE_CLICKED && !gameLogic.activeChoice) {
                 if(drawingPanel.text && drawingPanel.fulltext.length()-1 > drawingPanel.textIndex) {
                     drawingPanel.finishText();
                 } else gameLogic.next(this);
-                System.out.println("Mouse is clicked");
             }
         }, AWTEvent.MOUSE_EVENT_MASK);
 
@@ -71,4 +70,14 @@ public class GUI extends JFrame {
         repaint();
     }
 
+    // Makes given choices visible on the Drawing Panel (# of Buttons with possible choices on them)
+    // Add ActionListeners to Buttons and Upon actionEvent -> call
+    public void showChoice(Choice choice) {
+        gameLogic.activeChoice = true;
+        drawingPanel.showChoice(this, gameLogic, choice);
+    }
+
+    public void removeChoice() {
+        drawingPanel.removeChoices();
+    }
 }

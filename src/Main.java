@@ -8,6 +8,8 @@ public class Main {
 
         GUI gui = new GUI(gameLogic);
 
+        gameLogic.startGame(gui);
+
         // Test Background image change
 
 
