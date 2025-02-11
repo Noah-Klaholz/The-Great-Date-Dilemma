@@ -1,5 +1,6 @@
-Background:Media/TestBackground2.png
+Background:src/main/resources/TestBackground2.png
 Noah: Heyy mein Liebling.
+Mama: Hey schreibt man aber mit einem y.
 Choice: Ich liebe dich mein Baby# Du kleiner Hosenscheißer du;4#6
 Noah: Ich liebe dich mein Schatziiii.
 Jamila: HIHIHIHIHIHIHI.

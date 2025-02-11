@@ -8,7 +8,7 @@ public class GameLogic {
 
     public GameLogic() {
         try {
-            parser = new txtParser("Media/Story.txt");
+            parser = new txtParser(CONST.storyFilePath);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
