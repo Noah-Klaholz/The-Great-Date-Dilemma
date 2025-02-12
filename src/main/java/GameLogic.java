@@ -1,14 +1,24 @@
+import java.util.HashSet;
+import java.util.Set;
+
 public class GameLogic {
+
+    txtParser StoryParser;
+    txtParser achievementsParser;
+    txtParser endingsParser;
 
     // Gives the line # in Story.txt that is being read by the txtParser
     int index = 0;
-    txtParser parser;
-
     public boolean activeChoice = false;
+
+    // Safe File System init
+    Set<Integer> achievements = new HashSet<>();
 
     public GameLogic() {
         try {
-            parser = new txtParser(CONST.storyFilePath);
+            StoryParser = new txtParser(CONST.storyFilePath);
+            achievementsParser = new txtParser(CONST.achievementFilePath);
+            endingsParser = new txtParser(CONST.endingsFilePath);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -17,46 +27,55 @@ public class GameLogic {
     public void next(GUI gui) {
         //Calls the next action in the story (Text/Choice/MiniGame) -> Parse a file for certain keywords (Background, Choice, [Name], ...)
 
-        String line = parser.parseLine(index);
+        String line = StoryParser.parseLine(index);
         String[] switchCase = line.split(":");
 
-        switch (switchCase[0]) {
-            case "Choice":
-                gui.showChoice(createChoice(switchCase[1]));
-                break;
-            case "Background":
-                gui.setBackgroundImage(switchCase[1]);
-                break;
-            case "Ending": // TO-DO
-                break;
-            case "Achievement": // TO-DO
-                break;
-            default:
-                gui.drawingPanel.text = false;
-                gui.drawingPanel.displayedText = "";
-                gui.drawingPanel.textIndex = 0;
-                gui.text(line);
-                break;
+        try {
+            String operator = switchCase[1];
+            // System.out.println("Next gets called with index " + index + " and switchCase " + operator);
+            switch (switchCase[0]) {
+                case "Choice":
+                    gui.showChoice(createChoice(operator));
+                    break;
+                case "Background":
+                    gui.setBackgroundImage(operator);
+                    break;
+                case "Ending":
+                    gui.showEnding(operator);
+                    gui.showEndingScreen();
+                    break;
+                case "Achievement": // TO-DO
+                    System.out.println("Achievement added: " + achievementsParser.parseLine(Integer.parseInt(operator)-1));
+                    achievements.add(Integer.parseInt(operator)-1); // Adjust for 1 based index
+                    gui.showAchievement(achievementsParser.parseLine(Integer.parseInt(operator)-1)); // Adjust for 1 based index
+                    break;
+                default:
+                    gui.gameDrawingPanel.text = false;
+                    gui.gameDrawingPanel.displayedText = "";
+                    gui.gameDrawingPanel.textIndex = 0;
+                    gui.text(line);
+                    break;
+            }
+        } catch (Exception e) {
+            System.out.println("Error with line " + index);
+            System.out.println(e.getMessage());
         }
-        System.out.println("Next gets called with index " + index + " and switchCase " + switchCase[1]);
         index++;
-
-        /* Test Code:
-        if(index == 1) gui.setBackgroundImage("Media/TestBackground2.png");
-        if(index == 2) gui.text("Hallo, ich bin ein TestText");
-        if(index == 3) gui.text("Ich bin der zweite TestText");
-        if(index == 4) gui.setBackgroundImage("Media/TestBackground1.png");
-        if(index == 5) gui.showChoice(createChoice(""));
-        System.out.println("next gets called" + index);
-
-         */
     }
 
     public void startGame(GUI gui) {
+        SaveData saveData = SafeFileSystem.loadGame();
+        index = saveData.getStoryIndex();
+        achievements = saveData.getAchievements();
         next(gui);
     }
 
-    // Gets called in GUI after choice is chosen and reads the next line (jump line) by calling next()
+    public void saveGame(GUI gui) {
+        SafeFileSystem.saveGame(index, achievements);
+        gui.mainMenu();
+    }
+
+    // Gets called in drawingPanel after choice is chosen and reads the next line (jump line) by calling next()
     public void choose(GUI gui, Choice choice, int index) {
         this.index = choice.lineNumbers[index];
         activeChoice = false;
@@ -70,11 +89,7 @@ public class GameLogic {
         String[] jumpStrings = line.split(";")[1].split("#");
         int[] jumps = new int[jumpStrings.length];
         for (int i = 0; i < jumps.length; i++) {
-            jumps[i] = Integer.parseInt(jumpStrings[i]);
-        }
-        for (int i = 0; i < labels.length; i++) {
-            System.out.println(labels[i]);
-            System.out.println(jumps[i]);
+            jumps[i] = Integer.parseInt(jumpStrings[i])-1; //Adjust for zero based index
         }
         return new Choice(labels,jumps);
     }

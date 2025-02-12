@@ -1,7 +1,8 @@
 Background:src/main/resources/TestBackground2.png
 Noah: Heyy mein Liebling.
 Mama: Hey schreibt man aber mit einem y.
-Choice: Ich liebe dich mein Baby# Du kleiner Hosenscheißer du;4#6
+Choice: Ich liebe dich mein Baby# Du kleiner Hosenscheißer du;5#8
+Achievement:1
 Noah: Ich liebe dich mein Schatziiii.
 Jamila: HIHIHIHIHIHIHI.
 Noah: Du bist der kleine Hosenscheißer.

@@ -60,6 +60,29 @@ public class DrawingPanel extends JPanel {
         repaint();
     }
 
+    public void showAchievement(String achievement) {
+        JLabel floatingLabel = new JLabel("Achievement gained: " + achievement);
+        floatingLabel.setOpaque(true);
+        floatingLabel.setBackground(new Color(0, 0, 0, 0));
+        floatingLabel.setForeground(Color.WHITE);
+        floatingLabel.setBounds(getWidth() - 200, 50, 180, 30); // Adjust position
+
+        setLayout(null); // Required for absolute positioning
+        add(floatingLabel);
+        revalidate();
+        repaint();
+
+        // Make the label disappear after 2 seconds
+        Timer timer = new Timer(2000, e -> {
+            remove(floatingLabel);
+            revalidate();
+            repaint();
+        });
+        timer.setRepeats(false);
+        timer.start();
+    }
+
+
     public void showChoice(GUI gui, GameLogic gameLogic,Choice choice) {
         if(gameLogic.activeChoice) {
             int x = getWidth()-50;

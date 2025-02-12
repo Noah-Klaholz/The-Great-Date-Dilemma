@@ -10,3 +10,6 @@ Giving the player a Choice:
 -> JUMP_TO# = Int of the line that it should jump to if choice# is made
 Showing text:
     NAME_OF_THE_CHARACTER:TEXT
+Adding an Achievement:
+    Achievement:ACHIEVEMENT_NUMBER
+-> ACHIEVEMENT_NUMBER can be looked up / new achievements added in achievements.txt file
