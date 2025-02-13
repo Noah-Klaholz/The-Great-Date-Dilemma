@@ -14,7 +14,6 @@ public class CONST {
 
     public static String storyFilePath = "src/main/resources/Story.txt";
     public static String achievementFilePath = "src/main/resources/achievements.txt";
-    public static String endingsFilePath = "src/main/resources/endings.txt";
 
     public static int ButtonWidth = 300;
     public static int ButtonHeight = 100;

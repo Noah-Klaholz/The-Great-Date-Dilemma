@@ -4,7 +4,8 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 public class GUI extends JFrame {
@@ -26,6 +27,7 @@ public class GUI extends JFrame {
     JPanel gameScreen;
     JPanel endingScreen;
     JPanel achievementScreen;
+    private Map<String, JPanel> panels = new HashMap<>();
 
     public GUI(GameLogic gameLogic) {
 
@@ -53,10 +55,10 @@ public class GUI extends JFrame {
         endingScreen = createEndingScreen();
         achievementScreen = createAchievementScreen();
 
-        mainPanel.add(menuScreen, "Menu");
-        mainPanel.add(gameScreen, "Game");
-        mainPanel.add(endingScreen, "Ending");
-        mainPanel.add(achievementScreen, "Achievement");
+        addPanel(menuScreen, "Menu");
+        addPanel(gameScreen, "Game");
+        addPanel(endingScreen, "Ending");
+        addPanel(achievementScreen, "Achievement");
 
         cardLayout.show(mainPanel, "Menu");
         mainPanel.revalidate();
@@ -64,6 +66,35 @@ public class GUI extends JFrame {
 
         setContentPane(mainPanel);
         setVisible(true);
+    }
+
+    private void addPanel(JPanel panel, String name) {
+        panels.put(name, panel);
+        mainPanel.add(panel, name);
+    }
+
+    private void refreshPanel(String panelName) {
+        JPanel oldPanel = panels.get(panelName);
+        mainPanel.remove(oldPanel);
+
+        switch(panelName) {
+            case "Menu":
+                addPanel(createMenuScreen(), panelName);
+                break;
+            case "Game":
+                addPanel(createGameScreen(), panelName);
+                break;
+            case "Ending":
+                addPanel(createEndingScreen(), panelName);
+                break;
+            case "Achievement":
+                addPanel(createAchievementScreen(), panelName);
+                break;
+        }
+
+        cardLayout.show(mainPanel, panelName);
+        mainPanel.revalidate();
+        mainPanel.repaint();
     }
 
     private JLayeredPane createLayeredPane() {
@@ -154,30 +185,33 @@ public class GUI extends JFrame {
         titleLabel.setFont(new Font("Arial", Font.BOLD, CONST.TextSize));
         titleLabel.setForeground(Color.WHITE);
 
-        JLabel earningsLabel = new JLabel("You have earned the following achievements: ");
+        JLabel earningsLabel = new JLabel("");
         earningsLabel.setFont(new Font("Arial", Font.BOLD, CONST.TextSize));
         earningsLabel.setForeground(Color.WHITE);
 
-        achievementLabels = new ArrayList<>();
-        Set<Integer> achievements = gameLogic.addedAchievements;
-        int x = 100;
-        int y = 100;
-        for(Integer achievement : achievements) {
-            int index = achievement;
-            JLabel label = new JLabel(gameLogic.achievementsParser.parseLine(index));
-            System.out.println(gameLogic.achievementsParser.parseLine(index));
-            label.setFont(new Font("Arial", Font.BOLD, CONST.TextSize));
-            label.setBounds(x, y, label.getPreferredSize().width, label.getPreferredSize().height);
-            label.setForeground(Color.GRAY);
-            label.setBackground(Color.WHITE);
-            label.setOpaque(true);
+        if(!gameLogic.addedAchievements.isEmpty()) {
+            earningsLabel.setText("You have earned the following achievements: ");
+            achievementLabels = new ArrayList<>();
+            Set<Integer> achievements = gameLogic.addedAchievements;
+            int x = 100;
+            int y = 100;
+            for(Integer achievement : achievements) {
+                int index = achievement;
+                JLabel label = new JLabel(gameLogic.achievementsParser.parseLine(index));
+                System.out.println(gameLogic.achievementsParser.parseLine(index));
+                label.setFont(new Font("Arial", Font.BOLD, CONST.TextSize));
+                label.setBounds(x, y, label.getPreferredSize().width, label.getPreferredSize().height);
+                label.setForeground(Color.GRAY);
+                label.setBackground(Color.WHITE);
+                label.setOpaque(true);
 
-            achievementLabels.add(label);
-            endingLayeredPane.add(label, Integer.valueOf(1));
-            y += getHeight() / 10;
-            if(y >= getHeight() - 100) {
-                x = getWidth()-50;
-                y = 100;
+                achievementLabels.add(label);
+                endingLayeredPane.add(label, Integer.valueOf(1));
+                y += getHeight() / 10;
+                if(y >= getHeight() - 100) {
+                    x = getWidth()-50;
+                    y = 100;
+                }
             }
         }
 
@@ -252,7 +286,7 @@ public class GUI extends JFrame {
 
         JButton loadGameButton = new JButton(loadGameButtonIcon);
         SaveData saveData = SafeFileSystem.loadGame();
-        if(saveData.getPlayerSaved()) {
+        if(!saveData.getPlayerSaved()) {
             loadGameButton.setEnabled(false);
             loadGameButton.setContentAreaFilled(false);
             loadGameButton.setBorderPainted(false);
@@ -380,18 +414,18 @@ public class GUI extends JFrame {
     }
 
     public void showEndingScreen() {
-        cardLayout.show(mainPanel, "Ending");
+        refreshPanel("Ending");
     }
 
     public void mainMenu() {
-        cardLayout.show(mainPanel, "Menu");
+        refreshPanel("Menu");
     }
 
     public void showGame() {
-        cardLayout.show(mainPanel, "Game");
+        refreshPanel("Game");
     }
 
     public void showAchievement() {
-        cardLayout.show(mainPanel, "Achievement");
+        refreshPanel("Achievement");
     }
 }

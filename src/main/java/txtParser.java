@@ -20,7 +20,7 @@ public class txtParser {
     }
 
     public String parseLine(int lineNumber) {
-        if(lineNumber >= story.size()) {
+        if(lineNumber > story.size()) {
             System.out.println("Line number out of bounds: " + lineNumber);
             return "Error: Line number out of bounds";
         }

@@ -5,8 +5,8 @@ import java.util.Set;
 public class SafeFileSystem {
     private static final String SAVE_FILE = "save.dat";
 
-    public static void saveGame(int storyIndex, Set<Integer> achievements, boolean playerSaved) {
-        SaveData data = new SaveData(storyIndex, achievements, playerSaved);
+    public static void saveGame(int storyIndex, Set<Integer> achievements, Set<Integer> addedAchievements,boolean playerSaved) {
+        SaveData data = new SaveData(storyIndex, achievements, addedAchievements, playerSaved);
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(SAVE_FILE))) {
             out.writeObject(data);
             System.out.println("Saved successfully");
@@ -20,7 +20,7 @@ public class SafeFileSystem {
             return (SaveData) in.readObject();
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Load failed");
-            return new SaveData(0, new HashSet<>(), false);
+            return new SaveData(0, new HashSet<>(), new HashSet<>(),false);
         }
     }
 }

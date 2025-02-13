@@ -5,7 +5,6 @@ public class GameLogic {
 
     txtParser StoryParser;
     txtParser achievementsParser;
-    txtParser endingsParser;
 
     // Gives the line # in Story.txt that is being read by the txtParser
     int index = 0;
@@ -19,7 +18,6 @@ public class GameLogic {
         try {
             StoryParser = new txtParser(CONST.storyFilePath);
             achievementsParser = new txtParser(CONST.achievementFilePath);
-            endingsParser = new txtParser(CONST.endingsFilePath);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -59,7 +57,7 @@ public class GameLogic {
                     break;
             }
         } catch (Exception e) {
-            System.out.println("Error with line " + index);
+            System.out.println("Error with line " + (index+1));
             System.out.println(e.getMessage());
         }
         index++;
@@ -69,22 +67,27 @@ public class GameLogic {
         SaveData saveData = SafeFileSystem.loadGame();
         index = 0;
         achievements = saveData.getAchievements();
-        SafeFileSystem.saveGame(index, achievements, false);
+        addedAchievements = new HashSet<>();
+        saveData.setPlayerSaved(false);
         gui.showGame();
         next(gui);
     }
 
     public void loadGame(GUI gui) {
         SaveData saveData = SafeFileSystem.loadGame();
-        index = saveData.getStoryIndex();
+        int lastIndex = saveData.getStoryIndex();
         achievements = saveData.getAchievements();
-        SafeFileSystem.saveGame(index, achievements, false);
+        addedAchievements = saveData.getAddedAchievements();
+        saveData.setPlayerSaved(false);
+        while(index < lastIndex) {
+            next(gui);
+        }
         gui.showGame();
         next(gui);
     }
 
     public void saveGame(GUI gui, boolean playerSaved) {
-        SafeFileSystem.saveGame(index, achievements, playerSaved);
+        SafeFileSystem.saveGame(index, achievements, addedAchievements, playerSaved);
         gui.mainMenu();
     }
 
