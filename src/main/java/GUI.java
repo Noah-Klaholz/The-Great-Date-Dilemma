@@ -116,14 +116,16 @@ public class GUI extends JFrame {
         ImageIcon saveButtonIcon = new ImageIcon(scaledIcon2);
 
         // Creation of action Buttons
+        /*
         JButton saveButton = new JButton(saveButtonIcon);
         saveButton.setContentAreaFilled(false);
         saveButton.setBorderPainted(false);
-        saveButton.setBounds(0,0,saveButtonIcon.getIconWidth(),saveButtonIcon.getIconHeight());
+        saveButton.setBounds(60,0,saveButtonIcon.getIconWidth(),saveButtonIcon.getIconHeight());
         saveButton.addActionListener(e -> gameLogic.saveGame(this, true));
+         */
 
         JButton exitButton = new JButton(exitButtonIcon);
-        exitButton.setBounds(60,0,exitButtonIcon.getIconWidth(),exitButtonIcon.getIconHeight());
+        exitButton.setBounds(0,0,exitButtonIcon.getIconWidth(),exitButtonIcon.getIconHeight());
         exitButton.addActionListener(e -> System.exit(0));
 
         // Create layeredPane
@@ -144,12 +146,12 @@ public class GUI extends JFrame {
 
         // Add all components to layeredPane
         gameLayeredPane.add(exitButton, Integer.valueOf(1));
-        gameLayeredPane.add(saveButton, Integer.valueOf(1));
+        //gameLayeredPane.add(saveButton, Integer.valueOf(1));
         gameLayeredPane.add(gameBackgroundPanel, Integer.valueOf(0));
         gameLayeredPane.add(gameDrawingPanel, Integer.valueOf(1)); // Puts the Drawing Panel in foreground, use this for any other foreground features!
 
         Toolkit.getDefaultToolkit().addAWTEventListener(event -> {
-            if (event instanceof MouseEvent mouseEvent && mouseEvent.getID() == MouseEvent.MOUSE_CLICKED && !gameLogic.activeChoice && event.getSource() != exitButton && event.getSource() != saveButton) {
+            if (event instanceof MouseEvent mouseEvent && mouseEvent.getID() == MouseEvent.MOUSE_CLICKED && !gameLogic.activeChoice && event.getSource() != exitButton ) { // && event.getSource() != saveButton
                 if(gameDrawingPanel.text && gameDrawingPanel.fulltext.length()-1 > gameDrawingPanel.textIndex) {
                     gameDrawingPanel.finishText();
                 } else gameLogic.next(this);
@@ -201,9 +203,8 @@ public class GUI extends JFrame {
                 System.out.println(gameLogic.achievementsParser.parseLine(index));
                 label.setFont(new Font("Arial", Font.BOLD, CONST.TextSize));
                 label.setBounds(x, y, label.getPreferredSize().width, label.getPreferredSize().height);
-                label.setForeground(Color.GRAY);
-                label.setBackground(Color.WHITE);
-                label.setOpaque(true);
+                label.setForeground(Color.YELLOW);
+                label.setOpaque(false);
 
                 achievementLabels.add(label);
                 endingLayeredPane.add(label, Integer.valueOf(1));
@@ -226,7 +227,7 @@ public class GUI extends JFrame {
                 exitButton.setBounds(0,0,exitButtonIcon.getIconWidth(),exitButtonIcon.getIconHeight());
                 menuButton.setBounds(60,0,menuButtonIcon.getIconWidth(),menuButtonIcon.getIconHeight());
                 titleLabel.setBounds((getWidth()-titleLabel.getPreferredSize().width)/2,50,titleLabel.getPreferredSize().width,titleLabel.getPreferredSize().height);
-                earningsLabel.setBounds((getWidth()-titleLabel.getPreferredSize().width)/2,150,titleLabel.getPreferredSize().width,titleLabel.getPreferredSize().height);
+                earningsLabel.setBounds((getWidth()-earningsLabel.getPreferredSize().width)/2,150,earningsLabel.getPreferredSize().width,earningsLabel.getPreferredSize().height);
             }
         });
 
@@ -284,6 +285,7 @@ public class GUI extends JFrame {
         startButton.setBounds(getWidth()/2-50,getHeight()/2+100,startButtonIcon.getIconWidth(),startButtonIcon.getIconHeight());
         startButton.addActionListener(e -> gameLogic.startGame(this));
 
+        /*
         JButton loadGameButton = new JButton(loadGameButtonIcon);
         SaveData saveData = SafeFileSystem.loadGame();
         if(!saveData.getPlayerSaved()) {
@@ -293,11 +295,12 @@ public class GUI extends JFrame {
         }
         loadGameButton.setBounds(getWidth()/2-40,getHeight()/2+200,loadGameButtonIcon.getIconWidth(),loadGameButtonIcon.getIconHeight());
         loadGameButton.addActionListener(e -> gameLogic.loadGame(this));
+         */
 
         JButton achievementButton = new JButton(achievementButtonIcon);
         achievementButton.setContentAreaFilled(false);
         achievementButton.setBorderPainted(false);
-        achievementButton.setBounds(getWidth()/2-40,getHeight()/2+300,achievementButtonIcon.getIconWidth(),achievementButtonIcon.getIconHeight());
+        achievementButton.setBounds(getWidth()/2-40,getHeight()/2+200,achievementButtonIcon.getIconWidth(),achievementButtonIcon.getIconHeight());
         achievementButton.addActionListener(e -> showAchievement());
 
         JLabel titleLabel = new JLabel(titleLabelIcon);
@@ -312,7 +315,7 @@ public class GUI extends JFrame {
         menuLayeredPane.add(startButton, Integer.valueOf(1));
         menuLayeredPane.add(titleLabel, Integer.valueOf(1));
         menuLayeredPane.add(achievementButton, Integer.valueOf(1));
-        menuLayeredPane.add(loadGameButton, Integer.valueOf(1));
+        //menuLayeredPane.add(loadGameButton, Integer.valueOf(1));
         menuLayeredPane.add(menubackgroundPanel, Integer.valueOf(0));
 
         menuScreen.add(menuLayeredPane);
@@ -365,9 +368,8 @@ public class GUI extends JFrame {
             System.out.println(gameLogic.achievementsParser.parseLine(index));
             label.setFont(new Font("Arial", Font.BOLD, CONST.TextSize));
             label.setBounds(x, y, label.getPreferredSize().width, label.getPreferredSize().height);
-            label.setForeground(Color.GRAY);
-            label.setBackground(Color.WHITE);
-            label.setOpaque(true);
+            label.setForeground(Color.YELLOW);
+            label.setOpaque(false);
 
             achievementLabels.add(label);
             achievementLayeredPane.add(label, Integer.valueOf(1));
@@ -422,7 +424,7 @@ public class GUI extends JFrame {
     }
 
     public void showGame() {
-        refreshPanel("Game");
+        cardLayout.show(mainPanel, "Game");
     }
 
     public void showAchievement() {

@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -73,17 +74,23 @@ public class GameLogic {
         next(gui);
     }
 
+    /*
     public void loadGame(GUI gui) {
         SaveData saveData = SafeFileSystem.loadGame();
         int lastIndex = saveData.getStoryIndex();
         achievements = saveData.getAchievements();
         addedAchievements = saveData.getAddedAchievements();
         saveData.setPlayerSaved(false);
-        while(index < lastIndex) {
-            next(gui);
-        }
+        loadGameFromIndex(lastIndex, gui);
         gui.showGame();
         next(gui);
+    }
+     */
+
+    private void loadGameFromIndex(int lastIndex, GUI gui) {
+        if(index >= lastIndex) return;
+        next(gui);
+        SwingUtilities.invokeLater(() -> {loadGameFromIndex(lastIndex, gui);});
     }
 
     public void saveGame(GUI gui, boolean playerSaved) {

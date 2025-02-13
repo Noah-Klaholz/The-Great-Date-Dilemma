@@ -13,3 +13,6 @@ Showing text:
 Adding an Achievement:
     Achievement:ACHIEVEMENT_NUMBER
 -> ACHIEVEMENT_NUMBER can be looked up / new achievements added in achievements.txt file
+Showing the Ending screen:
+    Ending:
+Note: Proper endings / cutscenes should be written using the other features listed here.

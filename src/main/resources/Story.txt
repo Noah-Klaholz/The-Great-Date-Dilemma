@@ -1,12 +1,10 @@
-Background:src/main/resources/TestBackground2.png
-Noah: Heyy mein Liebling.
-Mama: Hey schreibt man aber mit einem y.
-Choice: Ich liebe dich mein Baby# Du kleiner Hosenscheißer du;5#9
-Achievement:1
-Noah: Ich liebe dich mein Schatziiii.
-Jamila: HIHIHIHIHIHIHI.
-Ending:1
-Achievement:2
-Noah: Du bist der kleine Hosenscheißer.
-Jamila: AHAHAHHAHAHAAHHAH.
-Ending:1
+Background: // Char Laying in Bed with phone in hand
+Du: Hii, ich wollte einfach mal fragen, ob du vllt. Lust hast, mal was zu machen?
+Er: Hi, klar, können wir gerne mal machen, an was hast du denn gedacht?
+Choice: Selbst etwas Kochen # In ein Restaurant gehen # Einen Überaschungstrip machen # Zurück fragen;5#
+Du: Komm doch morgen Abend zu mir und ich koche für uns!
+Er: Klingt toll, um wie viel Uhr soll ich zu dir kommen?
+Du: Komm doch auf 18 Uhr, ich freue mich sehr!
+Er: Ich freue mich auch, bis dann!
+Du (gedanklich): Was soll ich denn für uns kochen?
+Choice: Spaghetti mit Pesto und Parmesan # Indisches Dal # Sopa Paraguaya und ein Steak;
