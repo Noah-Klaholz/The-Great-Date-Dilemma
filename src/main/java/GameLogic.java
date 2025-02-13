@@ -12,7 +12,8 @@ public class GameLogic {
     public boolean activeChoice = false;
 
     // Safe File System init
-    Set<Integer> achievements = new HashSet<>();
+    public Set<Integer> achievements = new HashSet<>();
+    public Set<Integer> addedAchievements = new HashSet<>();
 
     public GameLogic() {
         try {
@@ -26,7 +27,6 @@ public class GameLogic {
 
     public void next(GUI gui) {
         //Calls the next action in the story (Text/Choice/MiniGame) -> Parse a file for certain keywords (Background, Choice, [Name], ...)
-
         String line = StoryParser.parseLine(index);
         String[] switchCase = line.split(":");
 
@@ -41,12 +41,14 @@ public class GameLogic {
                     gui.setBackgroundImage(operator);
                     break;
                 case "Ending":
-                    gui.showEnding(operator);
+                    index = 0;
+                    saveGame(gui, false);
                     gui.showEndingScreen();
                     break;
                 case "Achievement": // TO-DO
                     System.out.println("Achievement added: " + achievementsParser.parseLine(Integer.parseInt(operator)-1));
                     achievements.add(Integer.parseInt(operator)-1); // Adjust for 1 based index
+                    addedAchievements.add(Integer.parseInt(operator)-1); // Adjust for 1 based index
                     gui.showAchievement(achievementsParser.parseLine(Integer.parseInt(operator)-1)); // Adjust for 1 based index
                     break;
                 default:
@@ -65,13 +67,24 @@ public class GameLogic {
 
     public void startGame(GUI gui) {
         SaveData saveData = SafeFileSystem.loadGame();
-        index = saveData.getStoryIndex();
+        index = 0;
         achievements = saveData.getAchievements();
+        SafeFileSystem.saveGame(index, achievements, false);
+        gui.showGame();
         next(gui);
     }
 
-    public void saveGame(GUI gui) {
-        SafeFileSystem.saveGame(index, achievements);
+    public void loadGame(GUI gui) {
+        SaveData saveData = SafeFileSystem.loadGame();
+        index = saveData.getStoryIndex();
+        achievements = saveData.getAchievements();
+        SafeFileSystem.saveGame(index, achievements, false);
+        gui.showGame();
+        next(gui);
+    }
+
+    public void saveGame(GUI gui, boolean playerSaved) {
+        SafeFileSystem.saveGame(index, achievements, playerSaved);
         gui.mainMenu();
     }
 

@@ -8,7 +8,6 @@ public class Main {
 
         SwingUtilities.invokeLater(() -> {
             GUI gui = new GUI(gameLogic);
-            gameLogic.startGame(gui);
         });
 
     }
