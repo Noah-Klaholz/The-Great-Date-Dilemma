@@ -28,11 +28,22 @@ public class GameLogic {
         //Calls the next action in the story (Text/Choice/MiniGame) -> Parse a file for certain keywords (Background, Choice, [Name], ...)
         String line = StoryParser.parseLine(index);
         String[] switchCase = line.split(":");
+        String operator;
 
         try {
-            String operator = switchCase[1];
+            operator = switchCase[1];
+        } catch (Exception e) {
+            operator = "";
+        }
+
+        try {
             // System.out.println("Next gets called with index " + index + " and switchCase " + operator);
             switch (switchCase[0]) {
+                case "Comment":
+                    break;
+                case "Jump":
+                    index = Integer.parseInt(operator);
+                    break;
                 case "Choice":
                     gui.showChoice(createChoice(operator));
                     break;
@@ -44,7 +55,7 @@ public class GameLogic {
                     saveGame(gui, false);
                     gui.showEndingScreen();
                     break;
-                case "Achievement": // TO-DO
+                case "Achievement":
                     System.out.println("Achievement added: " + achievementsParser.parseLine(Integer.parseInt(operator)-1));
                     achievements.add(Integer.parseInt(operator)-1); // Adjust for 1 based index
                     addedAchievements.add(Integer.parseInt(operator)-1); // Adjust for 1 based index
@@ -59,6 +70,7 @@ public class GameLogic {
             }
         } catch (Exception e) {
             System.out.println("Error with line " + (index+1));
+            System.out.println(line);
             System.out.println(e.getMessage());
         }
         index++;

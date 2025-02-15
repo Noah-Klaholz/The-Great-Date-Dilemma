@@ -13,17 +13,25 @@ public class txtParser {
     private void loadFile(String filepath) throws IOException {
         try (BufferedReader br = new BufferedReader(new FileReader(filepath))) {
             String line;
+            //int i = 1;
             while ((line = br.readLine()) != null) {
+                //if(line.contains("Achievement")){ System.out.println(line + " :" + i); }
                 story.add(line);
+                //i++;
             }
         }
     }
 
     public String parseLine(int lineNumber) {
-        if(lineNumber > story.size()) {
-            System.out.println("Line number out of bounds: " + lineNumber);
+        if (lineNumber > story.size()) {
+            System.out.println("Line number out of bounds: " + lineNumber + story.size());
             return "Error: Line number out of bounds";
         }
-        return story.get(lineNumber);
+        String line = story.get(lineNumber);
+        if (!line.startsWith("//") && !line.equals("\n")) {
+            if (line.contains("//")) System.out.println(line);
+            return line;
+        }
+        return "Comment: " + line;
     }
 }

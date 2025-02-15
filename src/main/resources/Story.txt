@@ -1,10 +1,356 @@
-Background: // Char Laying in Bed with phone in hand
+// STORY - INIT
+Background:src/main/resources/StoryBackgrounds/Init-Texting.jpg
 Du: Hii, ich wollte einfach mal fragen, ob du vllt. Lust hast, mal was zu machen?
 Er: Hi, klar, können wir gerne mal machen, an was hast du denn gedacht?
-Choice: Selbst etwas Kochen # In ein Restaurant gehen # Einen Überaschungstrip machen # Zurück fragen;5#
+Choice: Selbst etwas Kochen # In ein Restaurant gehen # Einen Überaschungstrip machen # Zurück fragen;9#36#291#342
+// STORY: Kochen # Essen gehen # Überraschungstrip # Zurück fragen
+
+// KOCHEN - INIT
 Du: Komm doch morgen Abend zu mir und ich koche für uns!
 Er: Klingt toll, um wie viel Uhr soll ich zu dir kommen?
 Du: Komm doch auf 18 Uhr, ich freue mich sehr!
 Er: Ich freue mich auch, bis dann!
 Du (gedanklich): Was soll ich denn für uns kochen?
-Choice: Spaghetti mit Pesto und Parmesan # Indisches Dal # Sopa Paraguaya und ein Steak;
+Choice: Spaghetti mit Pesto und Parmesan # Indisches Dal # Sopa Paraguaya und ein Steak;17#23#29
+
+// KOCHEN - Spaghetti (ok)
+Background:src/main/resources/StoryBackgrounds/Spaghetti.jpg
+Er: Nudeln gehen immer oder?
+Du: Ja, immer.
+Ein Nudel-Essen später.
+Jump:174
+
+// KOCHEN - Dal (good)
+Background:src/main/resources/StoryBackgrounds/Dal.png
+Er: Wow!! Das sieht ja mal mega aus. Dal ist eines meiner Lieblingsgerichte!
+Du: Das freut mich sehr!
+Jump:220
+
+// KOCHEN - Steak (bad)
+Background:src/main/resources/StoryBackgrounds/BurnedSteak.jpg
+Achievement:1
+Du: Mist, ich hab das Essen anbrennen lassen.
+Choice: Ist nur Smokey Aroma # Wegwerfen und doch Essen gehen # Wegwerfen und ihn bitten zu kochen;184#195#204
+// VERBRANNT: Lügen # Essen gehen # Hilfe & Dal
+
+// ESSEN GEHEN - INIT
+Choice: Mühle (Deutsch €) # El Torro (Spanisch €€) # Jade (Indisch €€€) # Au Violon (Französisch €€€€);41#70#107#121
+// Essen gehen: Mühle # Torro # Jade # Violon
+
+// ESSEN GEHEN: Mühle
+Background:src/main/resources/StoryBackgrounds/GermanRest.png
+Er: Hmm deutsches Essen, interessant.
+Du: Magst du es nicht?
+Er: Doch doch, ich hatte es nur nicht so ganz erwartet ehrlich gesagt.
+Einige Zeit später
+Er: Danke für den netten Abend.
+Er: Das Essen war zwar nicht so besonders, aber es war nett dich kennenzulernen.
+Du: Fand ich auch.
+Du: MIST!
+Er: Oh.. was?
+Er: Was ist passiert?
+Du: Oh nein, das kann nicht wahr sein.
+Er: Was ist denn?
+Du: Ich habe meinen Geldbeutel vergessen.... tut mir soo leid.
+Er: Ist doch kein Problem, ich lade dich ein.
+Du: Aber das ist doch nicht nötig, ich habe dich doch hierher eingeladen.
+Du: Und mit der vollen Absicht zu bezahlen.
+Er: Das glaube ich auch, aber ich übernehme das okay?
+Du: Danke.
+Er: So, das hätten wir. Ich habe es genossen, aber ich denke ich gehe jezt mal wieder heimwärts.
+Du: Oh ... okay.
+Er: Kommst du von hier wieder nach Hause? Oder soll ich dich bringen?
+Du: Ich schaffe es, aber danke.
+Er: Okay, dann gute Nacht.
+Du: Gute Nacht.
+Achievement:2
+Ending:#
+
+// ESSEN GEHEN: Torro
+Background:src/main/resources/StoryBackgrounds/SpanischRest.jpg
+Er: WOOWW, was ein cooles Restaurant!!
+Du: Ja, vor allem die Köche sind super nett hier.
+Er: Sehr schön, dann lassen wir es uns schmecken!
+Einige Zeit später
+Er: Oh bin ich voll. Aber lecker wars.
+Du: Ja, das stimme ich dir zu.
+Du: MIST!
+Er: Oh.. was?
+Er: Was ist passiert?
+Du: Oh nein, das kann nicht wahr sein.
+Er: Was ist denn?
+Du: Ich habe meinen Geldbeutel vergessen.... tut mir soo leid.
+Er: Oh je, ich hab meinen gar nicht dabei, du meintest du lädst mich ein...
+Sie: Shit, was machen wir denn jetzt?
+Er: Fragen ob wir mit Tellerwaschen unser Essen abarbeiten können haha
+Sie: Bleibt wohl nichts anderes übrig.
+Er: Hola, Sr. Cruz:
+Er: Lo siento mucho, pero parece que ambos hemos perdido nuestras carteras.
+Er: ¿Hay alguna manera de que podamos ayudar en la cocina en lugar de pagar?
+Sr. Cruz: Es una petición poco habitual,
+Sr. Cruz: Pero en este momento no tenemos personal suficiente, así que sí.
+Sr. Cruz: Teneís que ayudarnos hasta el fin de la noche. ¿Los dos hablan español?
+Du: Sí.
+Du: Ich wusste gar nicht, dass du Spanisch sprichts?
+Er: Solo un poquitito, bella.
+Einige Zeit später.
+Er: Hahaha, naja, ich denke wir können drüber lachen oder?
+Du: Die Köche waren zumindest lustig.
+Er: Eigentlich hat es Spaß gemacht.
+Du: Finde ich auch.
+Er: Dann schlage ich vor, dass wir das wiederholen? Nächstes Mal, nehmen wir vielleicht unsere Geldbeutel mit.
+Du: Ja, das klingt schön.
+Achievement:3
+Ending:#
+
+// ESSEN GEHEN: Jade
+Background:src/main/resources/StoryBackgrounds/IndianRest.jpg
+Er: Oh, indisch?
+Du: ... ja?
+Er: Ich LIEBE indisches Essen!
+Du: ICH AUCH!
+Er: Perfekt. Dann lassen wir es uns mal schmecken.
+Einige Zeit später.
+Er: Das war lecker. Findest du nicht auch?
+Du: Ja absolut.
+Er: Sollen wir noch was cooles machen?
+Choice: Tanzen gehen # Zu dir nach Hause gehen # Verabschieden;140#162#175
+// POST-REST: Tanzen # Übernachten # Verabschieden
+
+// ESSEN GEHEN: Au Violon
+Background:src/main/resources/StoryBackgrounds/FrenchDining.png
+Er: Französisch? Und so teuer?
+Du: Umm, ja, ich dachte etwas besonderes...
+Er: Das ist lieb von dir, aber ich glaube das ist nicht so mein Fall.
+Du: Tut mir leid..
+Er: Naja, probieren wirs halt mal.
+Du: Okay.
+Einige Zeit später
+Er: Naja, für den Preis völlig überbewertet, aber danke trotzdem für den netten Abend.
+Du: Da hast du wohl Recht.
+Er: Ich bringe dich noch nach Hause.
+Du: Danke.
+Zu Hause
+Er: Dann gute Nacht.
+Du: Dir auch, danke für den Abend.
+Achievement:4
+Ending:#
+
+//POST-REST - Tanzen
+Er: Du bist eine unglaubliche Tänzerin!
+Du: Das wollte ich gerade sagen!
+Er: Danke, es macht wirklich Spaß mit dir.
+Du: Geht mir genauso.
+Achievement:5
+Choice: Zu ihm nach Hause gehen # Verabschieden;149#162
+// Zu ihm # Verabschieden
+
+// Zu ihm
+Er: Komm rein.
+Du: Komm DU rein.
+Drei Stunden später
+Achievement:6
+Du: Das war unglaublich.
+Er: Finde ich auch.
+Background: // Secret Ending
+Erzähler: Und sie lebten glücklich bis an ihr Lebensende
+Erzähler: Sie hatten zwei kleine Kinder und ein Strandhaus.
+Achievement:7
+Ending:#
+
+//POST-REST - Übernachten
+Background:src/main/resources/StoryBackgrounds/bed.png
+Du: Wollen wir noch zu mir nach Hause gehen?
+Er: ...
+Er: Sehr gerne.
+Achievement:6
+Drei Stunden später
+Du: Das war unglaublich.
+Er: Finde ich auch.
+Er: Das sollten wir öfters machen.
+Du: Finde ich auch.
+Ending:#
+
+// POST-REST - Verabschieden
+Er: Okay. Dann, es hat mir Spaß gemacht.
+Du: Wollen wir das wiederholen?
+Er: Sehr gerne.
+Achievement:3
+Du: Ich freue mich drauf, gute Nacht!
+Er: Ich mich auch, gute Nacht!
+Ending:#
+
+// VERBRANNT - Lügen (tragic)
+Du: So, hier ist das Essen. Ich habe extra ein bisschen Smokey Aroma hinzugefügt.
+Er: Du, ich muss ehrlich zugeben, das "Smokey Aroma" ist nicht wirklich meins.
+Er: Und wenn du zu stolz bist das zuzugeben, bist du es vielleicht auch nichts.
+Du: Tut mir leid...
+Du: ...ich...
+Er: Mir tut es auch leid. Hab noch einen schönen Abend, ich gehe nach Hause.
+Background: // Sad
+Achievement:8
+Ending:#
+
+// VERBRANNT - Essen gehen (bad)
+Du: Lass uns doch etwas Essen gehen!
+Er: Oh, ich hatte mich jetzt für einen gemütlichen Abend zu Hause gekleidet.
+Er: Warum hast du mir das nicht vorher gesagt?
+Du: Tut mir leid, aber lass uns jetzt losgehen!
+Er: Okay, wohin denn? Wenn wir keine Reservierung haben, fallen El Torro und Jade vermutlich weg.
+Choice: Mühle (Deutsch €) # Au Violon (Französisch €€€€);41#121
+// Essen gehen: Mühle # Violon
+
+// VERBRANNT - Hilfe & Dal
+Du: Ehrlich gesagt, ich hab das Essen anbrennen lassen
+Er: ...
+Du: Tut mir echt leid.
+Er: Alles gut, keine Sorge, ich koche gerne.
+Du: Wirklich? Würdest du mit mir zusammen kochen?
+Er: Na klar, sollen wir ein Dal machen?
+Du: Sehr gerne.
+Background: // Dal
+Du: Wow schmeckt wirklich genial!
+Er: Ja? Das freut mich zu hören.
+Du: Was wollen wir noch machen?
+Tut mir echt leid, dass es bisher nicht ganz so geklappt hat, wie gehofft.
+Er: Macht doch nichts.
+JUMP:220
+
+// FILM - INIT
+Er: Ich hatte bisher schon einen wunderschönen Abend. Du meintest, wir könnten noch einen Film zusammen schauen?
+Du: Ja, das wäre schön. Ich muss aber zugeben, ich kenne nicht so wahnsinnig viele.. -
+Er: Dann hast du ja Glück gehabt, ich LIEBE Filme und VideoGames.
+Er: Oh, war das zu seltsam? Ich bin ein wenig ein Nerd was das angeht..
+Du: Das finde ich toll. Du kannst mich gerne vollquatschen und mir alles erklären, ich finde so etwas toll.
+Er: Wirklich? Das freut mich so sehr.
+Du: Aber du musst zumindest ein paar Vorschläge machen, ich kenne mich wie gesagt nicht besonders gut aus.
+Er: Alles klar, hier sind mal ein paar: Ein der Herr der Ringe Marathon, Mama Mia oder Star Trek - Der erste Kontakt.
+Du: Oder The greatest Showman.
+Er: Oh den kenne ich noch gar nicht, das ist auch eine Idee.
+Choice: Der Herr der Ringe Marathon # Mama Mia # The greatest Showman # Star Trek - Der erste Kontakt;234#246#261#275
+// Film: Einschlafen # Übernachten # Heulen # Verlieben
+
+// FILM - LOTR
+Background:src/main/resources/StoryBackgrounds/LOTR.png
+Er: Gute Filme sind das.
+Du: Schhrrrchhh
+Er: Wie bitte?
+Du: ...blrbrb ... gutes Date.. Schhrhrhr
+Er: Eingeschlafen hmm?
+Er: Naja, macht ja nichts.
+Achievement:9
+Er deckt dich zu und lässt dich weiterschlafen.
+Ending:#
+
+// FILM - Mama Mia
+Background:src/main/resources/StoryBackgrounds/MamaMia.jpg
+Er: Ich liebe diesen Film.
+Du: Ich auch.
+Du: Aber irgendwie ist mir nach ...
+Du: Mehr ...
+Er: Mir auch ...
+Achievement:6
+Drei Stunden später
+Du: Das war unglaublich.
+Er: Finde ich auch.
+Er: Das sollten wir öfters machen.
+Du: Finde ich auch.
+Ending:#
+
+// FILM - Greatest Showman
+Background:src/main/resources/StoryBackgrounds/GreatestShowman.jpg
+Er: (heulend) Was ein schöner Film.
+Du: (weinend) Ja ich weiß.
+Achievement:10
+Er: Ist es okay, wenn ich hier bleibe?
+Du: Natürlich.
+Nach einer Nacht voller Gespräche, Gelächter, Tränen und Kuscheln.
+Er: Ich habe das unfassbar genossen.
+Du: Ich auch.
+Er: Ich hoffe wir sehen uns bald wieder.
+Achievement:3
+Du: Das hoffe ich auch.
+Ending:#
+
+// Film - Star Trek
+Background:src/main/resources/StoryBackgrounds/StarTrek.png
+Er nerded dich den ganzen Film zu
+Er: Ich liebe diesen Film. Star Trek generell.
+Er: Und Filme und Videospiele sowieso.
+Er: Ich hoffe ich habe dich nicht zu sehr vollgeblabbert.
+Du: Nein.
+Du: Ich liebe das.
+Er: Ich liebe dich.
+Du: ...
+Du: Ich liebe dich auch.
+Achievement:11
+Du: Ich möchte mein Leben mit dir verbringen.
+Er: Es geht mir genauso.
+Ending:#
+
+// Überaschungstrip
+Du: Pack deine Sachen, lass uns einen kleinen Überraschungstrip machen.
+Er: Wow, das klingt toll, wohin solls denn gehen?
+Er: Ich weiß, ist eine Überraschung, aber was soll ich für Kleidung anziehen?
+Choice: Warme Klamotten # Gemütliche Klamotten # Schwimm- und Sportzeug;297#317#331
+
+// TRIP - Wanderung
+Background:src/main/resources/StoryBackgrounds/Wanderung.jpg
+Du: Nimm was warmes mit, wir gehen ein bisschen wandern.
+Er: Okay alles klar, ich freue mich!
+Auf der Wanderung
+Du: AAAHAHAHHHHHH
+Er: Hab dich!
+Du: Danke, ich bin einfach ausgerutscht.
+Er: Ja, und fast den Berg runtergerutscht.
+Du: Hahaha ja das stimmt wohl.
+Er: So schlimm läuft es doch gar nicht, dass du Reißaus nehmen musst, oder?
+Du: Nein!
+Du: Ich meine, es läuft doch eigentlich echt gut.
+Er: Ja, finde ich auch. Aber ich glaube Wandern ist für uns beide eher nichts.
+Du: Ja, das fürchte ich auch haha.
+Er: Lass uns doch wann anders nochmal etwas unternehmen.
+Achievement:3
+Du: Sehr gerne.
+Ending:#
+
+// TRIP - Freizeitpark
+Background:src/main/resources/StoryBackgrounds/EuropaPark.jpg
+Er: Wow, wir gehen in einen Freizeitpark?
+Er: Wie cool!
+Du: Ja, fährst du auch gerne Achterbahnen?
+Er: Ja, ich liebe es.
+Du: Sehr schön, dann lass uns loslegen.
+Ein Tag voller Abenteuer, Höhenflüge und Gelächter später
+Er: Danke für diese wundervolle Zeit. Ich habe es sehr genossen.
+Achievement:12
+Du: Ich hab es auch sehr genossen. Das müssen wir unbedingt mal wieder machen.
+Er: Definitiv.
+Ending:#
+
+// TRIP - Volleyball
+Background:src/main/resources/StoryBackgrounds/beachvolleyballplatz.jpg
+Er: Oh, Beachvolleyball und Schwimmen gehen?
+Er: Das klingt perfekt.
+Du: Ja? Das freut mich doch zu hören.
+Ein knappes Beachvolleyball-Spiel später
+Er: Wow das war knapp, aber du spielst unglaublich gut
+Er: Und siehst noch besser aus.
+Du: (blushing) Danke.
+Er: Nein, ich danke dir.
+Achievement:13
+Er: Wir sollten unbedingt öfters spielen.
+Du: Aber wirklich.
+Er: Lass uns jetzt abkühlen.
+Du: Das klingt gut.
+Ending:#
+
+// Zurück Fragen
+Du: Was würdest du denn gerne machen?
+Er: Ehrlich gesagt...
+Er: Ich...
+Er: Ich würde dich gerne einfach besser kennenlernen.
+Du: ...
+Er: Wie wäre es, wenn wir uns bei mir treffen und ein Dal kochen? Und danach vielleicht noch einen Film schauen?
+Du: Das klingt toll!
+Jump:24

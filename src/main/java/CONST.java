@@ -7,7 +7,7 @@ public class CONST {
     public static String title_path = "src/main/resources/title.png";
     public static String load_game_Button_path = "src/main/resources/loadGameButton.png";
 
-    public static String backgroundImage_path = "src/main/resources/TestBackground1.png";
+    public static String backgroundImage_path = "src/main/resources/StoryBackgrounds/Init-Texting.jpg";
     public static String menuBackgroundImage_path = "src/main/resources/menuBackground.jpeg";
     public static String achievement_Background_Path = "src/main/resources/achievementsBackground.jpg";
     public static String ending_Background_Path = "src/main/resources/endingBackground.jpeg";
@@ -18,5 +18,5 @@ public class CONST {
     public static int ButtonWidth = 300;
     public static int ButtonHeight = 100;
     public static int textDelay = 50;
-    public static int TextSize = 40;
+    public static int TextSize = 20;
 }

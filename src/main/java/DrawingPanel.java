@@ -86,7 +86,7 @@ public class DrawingPanel extends JPanel {
     public void showChoice(GUI gui, GameLogic gameLogic,Choice choice) {
         if(gameLogic.activeChoice) {
             int x = getWidth()-50;
-            int y = getHeight()/2;
+            int y = getHeight()/2-200;
             for(int i=0; i<choice.choices.length; i++) {
                 int index = i;
                 String s = choice.choices[i];
