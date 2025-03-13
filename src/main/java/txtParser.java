@@ -1,4 +1,5 @@
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class txtParser {
@@ -11,13 +12,15 @@ public class txtParser {
     }
 
     private void loadFile(String filepath) throws IOException {
-        try (BufferedReader br = new BufferedReader(new FileReader(filepath))) {
+        InputStream is = getClass().getResourceAsStream(filepath);
+        if (is == null) {
+            throw new IOException("Resource not found: " + filepath);
+        }
+
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
             String line;
-            //int i = 1;
             while ((line = br.readLine()) != null) {
-                //if(line.contains("Achievement")){ System.out.println(line + " :" + i); }
                 story.add(line);
-                //i++;
             }
         }
     }

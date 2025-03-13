@@ -1,8 +1,8 @@
 // STORY - INIT
-Background:src/main/resources/StoryBackgrounds/Init-Texting.jpg
+Background:/StoryBackgrounds/Init-Texting.jpg
 Du: Hii, ich wollte einfach mal fragen, ob du vllt. Lust hast, mal was zu machen?
 Er: Hi, klar, können wir gerne mal machen, an was hast du denn gedacht?
-Choice: Selbst etwas Kochen # In ein Restaurant gehen # Einen Überaschungstrip machen # Zurück fragen;9#36#291#342
+Choice: Selbst etwas Kochen # In ein Restaurant gehen # Einen Überaschungstrip machen # Zurück fragen;9#37#292#349
 // STORY: Kochen # Essen gehen # Überraschungstrip # Zurück fragen
 
 // KOCHEN - INIT
@@ -11,23 +11,23 @@ Er: Klingt toll, um wie viel Uhr soll ich zu dir kommen?
 Du: Komm doch auf 18 Uhr, ich freue mich sehr!
 Er: Ich freue mich auch, bis dann!
 Du (gedanklich): Was soll ich denn für uns kochen?
-Choice: Spaghetti mit Pesto und Parmesan # Indisches Dal # Sopa Paraguaya und ein Steak;17#23#29
+Choice: Spaghetti mit Pesto und Parmesan # Indisches Dal # Sopa Paraguaya und ein Steak;17#23#30
 
 // KOCHEN - Spaghetti (ok)
-Background:src/main/resources/StoryBackgrounds/Spaghetti.jpg
+Background:/StoryBackgrounds/Spaghetti.jpg
 Er: Nudeln gehen immer oder?
 Du: Ja, immer.
 Ein Nudel-Essen später.
 Jump:174
 
 // KOCHEN - Dal (good)
-Background:src/main/resources/StoryBackgrounds/Dal.png
+Background:/StoryBackgrounds/Dal.png
 Er: Wow!! Das sieht ja mal mega aus. Dal ist eines meiner Lieblingsgerichte!
 Du: Das freut mich sehr!
 Jump:220
 
 // KOCHEN - Steak (bad)
-Background:src/main/resources/StoryBackgrounds/BurnedSteak.jpg
+Background:/StoryBackgrounds/BurnedSteak.jpg
 Achievement:1
 Du: Mist, ich hab das Essen anbrennen lassen.
 Choice: Ist nur Smokey Aroma # Wegwerfen und doch Essen gehen # Wegwerfen und ihn bitten zu kochen;184#195#204
@@ -38,7 +38,7 @@ Choice: Mühle (Deutsch €) # El Torro (Spanisch €€) # Jade (Indisch €€
 // Essen gehen: Mühle # Torro # Jade # Violon
 
 // ESSEN GEHEN: Mühle
-Background:src/main/resources/StoryBackgrounds/GermanRest.png
+Background:/StoryBackgrounds/GermanRest.png
 Er: Hmm deutsches Essen, interessant.
 Du: Magst du es nicht?
 Er: Doch doch, ich hatte es nur nicht so ganz erwartet ehrlich gesagt.
@@ -67,7 +67,7 @@ Achievement:2
 Ending:#
 
 // ESSEN GEHEN: Torro
-Background:src/main/resources/StoryBackgrounds/SpanischRest.jpg
+Background:/StoryBackgrounds/SpanischRest.jpg
 Er: WOOWW, was ein cooles Restaurant!!
 Du: Ja, vor allem die Köche sind super nett hier.
 Er: Sehr schön, dann lassen wir es uns schmecken!
@@ -104,7 +104,7 @@ Achievement:3
 Ending:#
 
 // ESSEN GEHEN: Jade
-Background:src/main/resources/StoryBackgrounds/IndianRest.jpg
+Background:/StoryBackgrounds/IndianRest.jpg
 Er: Oh, indisch?
 Du: ... ja?
 Er: Ich LIEBE indisches Essen!
@@ -118,7 +118,7 @@ Choice: Tanzen gehen # Zu dir nach Hause gehen # Verabschieden;140#162#175
 // POST-REST: Tanzen # Übernachten # Verabschieden
 
 // ESSEN GEHEN: Au Violon
-Background:src/main/resources/StoryBackgrounds/FrenchDining.png
+Background:/StoryBackgrounds/FrenchDining.png
 Er: Französisch? Und so teuer?
 Du: Umm, ja, ich dachte etwas besonderes...
 Er: Das ist lieb von dir, aber ich glaube das ist nicht so mein Fall.
@@ -159,7 +159,7 @@ Achievement:7
 Ending:#
 
 //POST-REST - Übernachten
-Background:src/main/resources/StoryBackgrounds/bed.png
+Background:/StoryBackgrounds/bed.png
 Du: Wollen wir noch zu mir nach Hause gehen?
 Er: ...
 Er: Sehr gerne.
@@ -208,7 +208,7 @@ Er: Alles gut, keine Sorge, ich koche gerne.
 Du: Wirklich? Würdest du mit mir zusammen kochen?
 Er: Na klar, sollen wir ein Dal machen?
 Du: Sehr gerne.
-Background: // Dal
+Background:/StoryBackgrounds/Dal.png
 Du: Wow schmeckt wirklich genial!
 Er: Ja? Das freut mich zu hören.
 Du: Was wollen wir noch machen?
@@ -231,7 +231,7 @@ Choice: Der Herr der Ringe Marathon # Mama Mia # The greatest Showman # Star Tre
 // Film: Einschlafen # Übernachten # Heulen # Verlieben
 
 // FILM - LOTR
-Background:src/main/resources/StoryBackgrounds/LOTR.png
+Background:/StoryBackgrounds/LOTR.png
 Er: Gute Filme sind das.
 Du: Schhrrrchhh
 Er: Wie bitte?
@@ -243,7 +243,7 @@ Er deckt dich zu und lässt dich weiterschlafen.
 Ending:#
 
 // FILM - Mama Mia
-Background:src/main/resources/StoryBackgrounds/MamaMia.jpg
+Background:/StoryBackgrounds/MamaMia.jpg
 Er: Ich liebe diesen Film.
 Du: Ich auch.
 Du: Aber irgendwie ist mir nach ...
@@ -258,7 +258,7 @@ Du: Finde ich auch.
 Ending:#
 
 // FILM - Greatest Showman
-Background:src/main/resources/StoryBackgrounds/GreatestShowman.jpg
+Background:/StoryBackgrounds/GreatestShowman.jpg
 Er: (heulend) Was ein schöner Film.
 Du: (weinend) Ja ich weiß.
 Achievement:10
@@ -273,7 +273,7 @@ Du: Das hoffe ich auch.
 Ending:#
 
 // Film - Star Trek
-Background:src/main/resources/StoryBackgrounds/StarTrek.png
+Background:/StoryBackgrounds/StarTrek.png
 Er nerded dich den ganzen Film zu
 Er: Ich liebe diesen Film. Star Trek generell.
 Er: Und Filme und Videospiele sowieso.
@@ -295,7 +295,7 @@ Er: Ich weiß, ist eine Überraschung, aber was soll ich für Kleidung anziehen?
 Choice: Warme Klamotten # Gemütliche Klamotten # Schwimm- und Sportzeug;297#317#331
 
 // TRIP - Wanderung
-Background:src/main/resources/StoryBackgrounds/Wanderung.jpg
+Background:/StoryBackgrounds/Wanderung.jpg
 Du: Nimm was warmes mit, wir gehen ein bisschen wandern.
 Er: Okay alles klar, ich freue mich!
 Auf der Wanderung
@@ -315,7 +315,7 @@ Du: Sehr gerne.
 Ending:#
 
 // TRIP - Freizeitpark
-Background:src/main/resources/StoryBackgrounds/EuropaPark.jpg
+Background:/StoryBackgrounds/EuropaPark.jpg
 Er: Wow, wir gehen in einen Freizeitpark?
 Er: Wie cool!
 Du: Ja, fährst du auch gerne Achterbahnen?
@@ -329,7 +329,7 @@ Er: Definitiv.
 Ending:#
 
 // TRIP - Volleyball
-Background:src/main/resources/StoryBackgrounds/beachvolleyballplatz.jpg
+Background:/StoryBackgrounds/beachvolleyballplatz.jpg
 Er: Oh, Beachvolleyball und Schwimmen gehen?
 Er: Das klingt perfekt.
 Du: Ja? Das freut mich doch zu hören.

@@ -3,10 +3,7 @@ import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class GUI extends JFrame {
 
@@ -107,13 +104,15 @@ public class GUI extends JFrame {
         JPanel gameScreen = new JPanel(new BorderLayout());
 
         // Icons for Action Buttons
-        ImageIcon OrigExitButtonIcon = new ImageIcon(CONST.exit_Button_path);
+        ImageIcon OrigExitButtonIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource(CONST.exit_Button_path)));
         Image scaledIcon = OrigExitButtonIcon.getImage().getScaledInstance(50,50, Image.SCALE_SMOOTH);
         ImageIcon exitButtonIcon = new ImageIcon(scaledIcon);
 
-        ImageIcon OrigSaveButtonIcon = new ImageIcon(CONST.save_Button_path);
+        /*
+        ImageIcon OrigSaveButtonIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource(CONST.save_Button_path)));
         Image scaledIcon2 = OrigSaveButtonIcon.getImage().getScaledInstance(50,50, Image.SCALE_SMOOTH);
         ImageIcon saveButtonIcon = new ImageIcon(scaledIcon2);
+         */
 
         // Creation of action Buttons
         /*
@@ -168,11 +167,11 @@ public class GUI extends JFrame {
 
         JLayeredPane endingLayeredPane = createLayeredPane();
 
-        ImageIcon OrigExitButtonIcon = new ImageIcon(CONST.exit_Button_path);
+        ImageIcon OrigExitButtonIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource(CONST.exit_Button_path)));
         Image scaledIcon = OrigExitButtonIcon.getImage().getScaledInstance(50,50, Image.SCALE_SMOOTH);
         ImageIcon exitButtonIcon = new ImageIcon(scaledIcon);
 
-        ImageIcon OrigMenuButtonIcon = new ImageIcon(CONST.menu_Button_path);
+        ImageIcon OrigMenuButtonIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource(CONST.menu_Button_path)));
         Image scaledIcon2 = OrigMenuButtonIcon.getImage().getScaledInstance(50,50, Image.SCALE_SMOOTH);
         ImageIcon menuButtonIcon = new ImageIcon(scaledIcon2);
 
@@ -254,23 +253,25 @@ public class GUI extends JFrame {
         });
 
         // Create Icons for Buttons and Labels
-        ImageIcon OrigExitButtonIcon = new ImageIcon(CONST.exit_Button_path);
+        ImageIcon OrigExitButtonIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource(CONST.exit_Button_path)));
         Image scaledIcon = OrigExitButtonIcon.getImage().getScaledInstance(50,50, Image.SCALE_SMOOTH);
         ImageIcon exitButtonIcon = new ImageIcon(scaledIcon);
 
-        ImageIcon OrigStartButtonIcon = new ImageIcon(CONST.start_Button_path);
+        ImageIcon OrigStartButtonIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource(CONST.start_Button_path)));
         Image scaledIcon2 = OrigStartButtonIcon.getImage().getScaledInstance(100,100, Image.SCALE_SMOOTH);
         ImageIcon startButtonIcon = new ImageIcon(scaledIcon2);
 
-        ImageIcon OrigLoadGameButton = new ImageIcon(CONST.load_game_Button_path);
+        /*
+        ImageIcon OrigLoadGameButton = new ImageIcon(Objects.requireNonNull(getClass().getResource(CONST.load_game_Button_path)));
         Image scaledIcon3 = OrigLoadGameButton.getImage().getScaledInstance(80,80, Image.SCALE_SMOOTH);
         ImageIcon loadGameButtonIcon = new ImageIcon(scaledIcon3);
+         */
 
-        ImageIcon OrigAchievementButtonIcon = new ImageIcon(CONST.achievement_Button_path);
+        ImageIcon OrigAchievementButtonIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource(CONST.achievement_Button_path)));
         Image scaledIcon4 = OrigAchievementButtonIcon.getImage().getScaledInstance(80,80, Image.SCALE_SMOOTH);
         ImageIcon achievementButtonIcon = new ImageIcon(scaledIcon4);
 
-        ImageIcon OrigTitleLabelIcon = new ImageIcon(CONST.title_path);
+        ImageIcon OrigTitleLabelIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource(CONST.title_path)));
         Image scaledIcon5 = OrigTitleLabelIcon.getImage().getScaledInstance(300,300, Image.SCALE_SMOOTH);
         ImageIcon titleLabelIcon = new ImageIcon(scaledIcon5);
 
@@ -328,11 +329,11 @@ public class GUI extends JFrame {
         JLayeredPane achievementLayeredPane = createLayeredPane();
 
         // Create Icons for Buttons
-        ImageIcon OrigExitButtonIcon = new ImageIcon(CONST.exit_Button_path);
+        ImageIcon OrigExitButtonIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource(CONST.exit_Button_path)));
         Image scaledIcon = OrigExitButtonIcon.getImage().getScaledInstance(50,50, Image.SCALE_SMOOTH);
         ImageIcon exitButtonIcon = new ImageIcon(scaledIcon);
 
-        ImageIcon OrigMenuButtonIcon = new ImageIcon(CONST.menu_Button_path);
+        ImageIcon OrigMenuButtonIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource(CONST.menu_Button_path)));
         Image scaledIcon2 = OrigMenuButtonIcon.getImage().getScaledInstance(50,50, Image.SCALE_SMOOTH);
         ImageIcon menuButtonIcon = new ImageIcon(scaledIcon2);
 

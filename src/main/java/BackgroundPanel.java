@@ -1,17 +1,30 @@
 import javax.swing.*;
 import java.awt.*;
+import java.net.URL;
 
 // Should be used to draw background images (animation seems to be rather difficult)
 public class BackgroundPanel extends JPanel {
     private Image backgroundImage;
 
     public BackgroundPanel(String imagePath) {
-        backgroundImage = new ImageIcon(imagePath).getImage();
+        URL imageUrl = getClass().getResource(imagePath);
+        if (imageUrl != null) {
+            System.out.println("Loaded background: " + imageUrl);
+            this.backgroundImage = new ImageIcon(imageUrl).getImage();
+        } else {
+            System.err.println("Background image not found: " + imagePath);
+        }
     }
 
     public void setBackgroundImage(String imagePath) {
-        this.backgroundImage = new ImageIcon(imagePath).getImage();
-        repaint();
+        URL imageUrl = getClass().getResource(imagePath);
+        if (imageUrl != null) {
+            System.out.println("Loaded background: " + imageUrl);
+            this.backgroundImage = new ImageIcon(imageUrl).getImage();
+        } else {
+            System.err.println("Background image not found: " + imagePath);
+        }
+
     }
 
     @Override
