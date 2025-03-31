@@ -1,3 +1,12 @@
+This is a basic "Game Engine" which allow the user to create and play custom non-linear story games on windows
+- Features a story.txt file used to create the story and diverging storylines
+- Save-Feature 
+- Features an example project which can be played 
+
+
+
+Manual:
+
 The Game starts out by default with the Background image at path in CONST.backgroundImagePath.
 
 The Story can be written by adjusting the Story.txt file and adding the necessary resources to the Media file.
